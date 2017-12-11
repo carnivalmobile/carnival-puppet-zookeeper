@@ -110,6 +110,7 @@ class zookeeper(
   if $::zookeeper::ensure_account {
     group { $group:
       ensure => $ensure_account,
+      system => true,
     }
 
     user { $user:
@@ -118,6 +119,7 @@ class zookeeper(
       comment => 'Zookeeper',
       gid     => $group,
       shell   => $shell,
+      system  => true,
       require => Group[$group]
     }
   }
